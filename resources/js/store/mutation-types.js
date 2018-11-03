@@ -1,4 +1,5 @@
 // auth.js
+export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
 export const SAVE_TOKEN = 'SAVE_TOKEN'
 export const FETCH_USER = 'FETCH_USER'

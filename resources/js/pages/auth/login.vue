@@ -7,8 +7,10 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
             <div class="col-md-7">
-              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
-              <has-error :form="form" field="email"/>
+              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }"
+                     class="form-control" type="email" name="email"
+              >
+              <has-error :form="form" field="email"></has-error>
             </div>
           </div>
 
@@ -16,14 +18,16 @@
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('password') }}</label>
             <div class="col-md-7">
-              <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" type="password" name="password">
-              <has-error :form="form" field="password"/>
+              <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }"
+                     class="form-control" type="password" name="password"
+              >
+              <has-error :form="form" field="password"></has-error>
             </div>
           </div>
 
           <!-- Remember Me -->
           <div class="form-group row">
-            <div class="col-md-3"/>
+            <div class="col-md-3"></div>
             <div class="col-md-7 d-flex">
               <checkbox v-model="remember" name="remember">
                 {{ $t('remember_me') }}
@@ -43,7 +47,7 @@
               </v-button>
 
               <!-- GitHub Login Button -->
-              <login-with-github/>
+              <login-with-github />
             </div>
           </div>
         </form>
@@ -78,7 +82,7 @@ export default {
   methods: {
     async login () {
       // Submit the form.
-      const { data } = await this.form.post('/api/login')
+      const { data } = await this.form.post('/login')
 
       // Save the token.
       this.$store.dispatch('auth/saveToken', {
