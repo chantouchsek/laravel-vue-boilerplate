@@ -1,3 +1,15 @@
+import sample from '../router/sample'
+
+// Containers
+import Full from '@/containers/Full'
+
+// Views
+import Dashboard from '@/views/sample/Dashboard'
+
+// Views - Pages
+import Page404 from '@/views/pages/Page404'
+import Page500 from '@/views/pages/Page500'
+
 const Welcome = () => import('~/pages/welcome').then(m => m.default || m)
 const Login = () => import('~/pages/auth/login').then(m => m.default || m)
 const Register = () => import('~/pages/auth/register').then(m => m.default || m)
@@ -27,5 +39,47 @@ export default [
       { path: 'password', name: 'settings.password', component: SettingsPassword }
     ] },
 
-  { path: '*', component: NotFound }
+  { path: '*', component: NotFound },
+  {
+    path: '/',
+    redirect: '/dashboard',
+    name: 'Home',
+    component: Full,
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: Dashboard
+      },
+      ...sample
+    ]
+  },
+  {
+    path: '/pages',
+    redirect: '/pages/404',
+    name: 'Pages',
+    component: { render (c) { return c('router-view') } },
+    children: [
+      {
+        path: '404',
+        name: 'Page404',
+        component: Page404
+      },
+      {
+        path: '500',
+        name: 'Page500',
+        component: Page500
+      },
+      {
+        path: 'login',
+        name: 'Login',
+        component: Login
+      },
+      {
+        path: 'register',
+        name: 'Register',
+        component: Register
+      }
+    ]
+  }
 ]

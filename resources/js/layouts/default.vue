@@ -1,8 +1,8 @@
 <template>
   <div class="main-layout">
-    <navbar />
+    <navbar v-if="$route.name === 'login'" />
 
-    <div class="container mt-4">
+    <div :class="[$route.name === 'login' ? 'container mt-4' : '']">
       <child />
     </div>
   </div>
