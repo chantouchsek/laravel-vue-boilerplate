@@ -16,8 +16,14 @@ import App from '~/components/App'
  */
 import Axios from 'axios'
 
+import './bootstrap'
+
 import '~/plugins'
 import '~/components'
+
+import BootstrapVue from 'bootstrap-vue'
+import Notifications from 'vue-notification'
+import Sweetalert from 'vue-sweetalert2'
 
 Vue.config.productionTip = false
 
@@ -34,6 +40,10 @@ Object.defineProperty(Vue.prototype, '$http', {
     return Axios
   }
 })
+
+Vue.use(BootstrapVue)
+Vue.use(Notifications)
+Vue.use(Sweetalert)
 
 /* eslint-disable no-new */
 new Vue({
